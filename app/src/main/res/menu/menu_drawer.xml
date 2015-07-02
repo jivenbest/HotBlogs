@@ -1,0 +1,18 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:id="@+id/menu_info_details"
+        android:title="测试"
+        android:checked="true"
+        android:icon="@drawable/stat_sys_phone_call"/>
+
+    <item android:id="@+id/menu_share"
+        android:title="测试"
+        android:checked="true"
+        android:icon="@android:drawable/stat_sys_phone_call_forward"/>
+
+    <item android:id="@+id/menu_agenda"
+        android:title="测试"
+        android:checked="true"
+        android:icon="@android:drawable/stat_sys_phone_call_on_hold"/>
+</menu>

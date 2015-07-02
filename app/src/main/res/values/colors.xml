@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="grey01">#e8e8e8</color>
+    <color name="grey02">#eeeeee</color>
+    <color name="grey03">#dddddd</color>
+    <color name="grey04">#cccccc</color>
+    <color name="grey05">#bbbbbb</color>
+    <color name="grey06">#aaaaaa</color>
+    <color name="colorPrimary">#FD5522</color>
+    <color name="toolbar_background">#FD5522</color>
+    <color name="tablelayout_background">#FD5522</color>
+
+</resources>
