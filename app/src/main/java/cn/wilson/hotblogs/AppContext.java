@@ -77,7 +77,6 @@ public class AppContext extends Application {
                 .tasksProcessingOrder(QueueProcessingType.LIFO)
                 .diskCache(new UnlimitedDiskCache(cacheDir))
                 .imageDownloader(new BaseImageDownloader(context, 5 * 1000, 30 * 1000))
-                // .writeDebugLogs()    // Remove for release app
                 .build();
 
         ImageLoader.getInstance().init(config);

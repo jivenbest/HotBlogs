@@ -2,7 +2,6 @@ package cn.wilson.hotblogs.fragment;
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -29,10 +28,7 @@ import cn.wilson.hotblogs.bean.blogBean;
 import cn.wilson.hotblogs.dao.XMLParse;
 import cn.wilson.hotblogs.dao.XMLVolleyRequest;
 
-/**
- * A simple {@link Fragment} subclass.
- */
-public class news extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+public class cnblogs extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
@@ -40,12 +36,13 @@ public class news extends BaseFragment implements SwipeRefreshLayout.OnRefreshLi
     private List<blogBean> newList;
     private BlogAdapter blogAdapter;
     private int pageIndex = 1;
-    public news() {}
 
+    public cnblogs() {}
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_news, container, false);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
+
+        return inflater.inflate(R.layout.fragment_cnblogs, container, false);
     }
 
     @Override
@@ -112,13 +109,13 @@ public class news extends BaseFragment implements SwipeRefreshLayout.OnRefreshLi
             }
         });
 
-        AppContext.getInstance().addToRequestQueue(request, "oschina");
+        AppContext.getInstance().addToRequestQueue(request, "blogs");
     }
 
     @Override
     public void onStop(){
         super.onStop();
 
-        AppContext.getInstance().cancelPendingRequests("oschina");
+        AppContext.getInstance().cancelPendingRequests("blogs");
     }
 }

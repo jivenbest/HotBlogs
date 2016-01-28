@@ -13,88 +13,61 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import cn.wilson.hotblogs.adapter.FragmentAdapter;
 import cn.wilson.hotblogs.base.BaseActivity;
-import cn.wilson.hotblogs.fragment.blogs;
+import cn.wilson.hotblogs.fragment.cnblogs;
 import cn.wilson.hotblogs.fragment.news;
-import cn.wilson.hotblogs.fragment.recommend;
+import cn.wilson.hotblogs.fragment.oschina;
 
 
 public class AppMain extends BaseActivity {
 
-    private Toolbar toolbar;
-    private NavigationView navigationView;
-    private DrawerLayout drawerLayout;
-    private TabLayout tabLayout;
-    private ViewPager viewPager;
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.navigation_view) NavigationView navigationView;
+    @Bind(R.id.drawer_layout) DrawerLayout drawerLayout;
+    @Bind(R.id.tab_layout) TabLayout tabLayout;
+    @Bind(R.id.view_pager) ViewPager viewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_app_main);
 
-        InitView();
-    }
-
-    private void InitView(){
-        toolbar = (Toolbar) this.findViewById(R.id.toolbar);
-        drawerLayout = (DrawerLayout) this.findViewById(R.id.drawer_layout);
-        navigationView = (NavigationView) this.findViewById(R.id.navigation_view);
-        tabLayout = (TabLayout)this.findViewById(R.id.tab_layout);
-        viewPager = (ViewPager)this.findViewById(R.id.view_pager);
+        ButterKnife.bind(this);
 
         initToolbar();
         initTableLayout();
-
         navigationView.setNavigationItemSelectedListener(naviListener);
-        //drawerLayout.openDrawer(navigationView);
     }
 
     private void initToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_drawer);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setTitle("推荐");
+        getSupportActionBar().setTitle("博客园");
     }
 
     private void initTableLayout(){
 
         List<String> titles = new ArrayList<>();
-        titles.add("推荐");
-        titles.add("博客");
-        titles.add("新闻");
+        titles.add("博客园");
+        titles.add("开源中国");
+        titles.add("IT资讯");
         tabLayout.addTab(tabLayout.newTab().setText(titles.get(0)));
         tabLayout.addTab(tabLayout.newTab().setText(titles.get(1)));
         tabLayout.addTab(tabLayout.newTab().setText(titles.get(2)));
 
         List<Fragment> fragments = new ArrayList<>();
-        fragments.add(new recommend());
-        fragments.add(new blogs());
+        fragments.add(new cnblogs());
+        fragments.add(new oschina());
         fragments.add(new news());
 
         FragmentAdapter adapter = new FragmentAdapter(getSupportFragmentManager(), fragments, titles);
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
         tabLayout.setTabsFromPagerAdapter(adapter);
-
-//        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-//            @Override
-//            public void onTabSelected(TabLayout.Tab tab) {
-//                Toast.makeText(AppMain.this,String.valueOf(tab.getPosition()) + " " + tab.getText(),Toast.LENGTH_SHORT).show();
-//            }
-//
-//            @Override
-//            public void onTabUnselected(TabLayout.Tab tab) {
-//
-//            }
-//
-//            @Override
-//            public void onTabReselected(TabLayout.Tab tab) {
-//
-//            }
-//        });
-
-
     }
 
     private NavigationView.OnNavigationItemSelectedListener naviListener = new NavigationView.OnNavigationItemSelectedListener() {
@@ -145,5 +118,6 @@ public class AppMain extends BaseActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
 
 }

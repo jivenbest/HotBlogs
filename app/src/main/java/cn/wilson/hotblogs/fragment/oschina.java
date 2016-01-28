@@ -1,6 +1,5 @@
 package cn.wilson.hotblogs.fragment;
 
-
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -28,7 +27,8 @@ import cn.wilson.hotblogs.bean.blogBean;
 import cn.wilson.hotblogs.dao.XMLParse;
 import cn.wilson.hotblogs.dao.XMLVolleyRequest;
 
-public class blogs extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
+
+public class oschina extends BaseFragment implements SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView recyclerView;
@@ -36,11 +36,11 @@ public class blogs extends BaseFragment implements SwipeRefreshLayout.OnRefreshL
     private List<blogBean> newList;
     private BlogAdapter blogAdapter;
     private int pageIndex = 1;
+    public oschina() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_blogs, container, false);
+        return inflater.inflate(R.layout.fragment_oschina, container, false);
     }
 
     @Override
@@ -48,20 +48,13 @@ public class blogs extends BaseFragment implements SwipeRefreshLayout.OnRefreshL
         super.onViewCreated(view, savedInstanceState);
 
         initView();
-        //initData();
+        GetListData();
     }
 
     @Override
     public void onRefresh() {
         pageIndex = 1;
         GetListData();
-    }
-
-    @Override
-    public void onStop(){
-        super.onStop();
-
-        AppContext.getInstance().cancelPendingRequests("blogs");
     }
 
     private void initView(){
@@ -82,7 +75,6 @@ public class blogs extends BaseFragment implements SwipeRefreshLayout.OnRefreshL
         blogAdapter = new BlogAdapter(mLists);
         recyclerView.setAdapter(blogAdapter);
 
-        GetListData();
     }
 
     private void GetListData(){
@@ -115,7 +107,13 @@ public class blogs extends BaseFragment implements SwipeRefreshLayout.OnRefreshL
             }
         });
 
-        AppContext.getInstance().addToRequestQueue(request, "blogs");
+        AppContext.getInstance().addToRequestQueue(request, "oschina");
     }
 
+    @Override
+    public void onStop(){
+        super.onStop();
+
+        AppContext.getInstance().cancelPendingRequests("oschina");
+    }
 }

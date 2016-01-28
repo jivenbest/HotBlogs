@@ -18,6 +18,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
     private List<blogBean> mLists;
 
     public BlogAdapter(List<blogBean> mLists) {
+
         this.mLists = mLists;
     }
 
@@ -37,6 +38,7 @@ public class BlogAdapter extends RecyclerView.Adapter<BlogAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
+
         return mLists==null ? 0 : mLists.size();
     }
 

@@ -3,13 +3,16 @@
 
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="black_light">#333333</color>
     <color name="grey01">#e8e8e8</color>
     <color name="grey02">#eeeeee</color>
     <color name="grey03">#dddddd</color>
     <color name="grey04">#cccccc</color>
     <color name="grey05">#bbbbbb</color>
     <color name="grey06">#aaaaaa</color>
-    <color name="colorPrimary">#FD5522</color>
+    <color name="colorPrimary">#FF5722</color>
+    <color name="colorPrimaryDark">#E64A19</color>
+    <color name="app_background">#f2f2f2</color>
     <color name="toolbar_background">#FD5522</color>
     <color name="tablelayout_background">#FD5522</color>
 
